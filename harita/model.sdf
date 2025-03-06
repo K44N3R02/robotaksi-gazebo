@@ -7,7 +7,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <scale>0.0254 0.0254 0.0254</scale>
+            <scale>20 20 0.1</scale>
             <uri>model://harita/meshes/harita.obj</uri>
           </mesh>
         </geometry>
@@ -16,7 +16,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <scale>0.0254 0.0254 0.0254</scale>
+            <scale>20 20 0.1</scale>
             <uri>model://harita/meshes/harita.obj</uri>
           </mesh>
         </geometry>
