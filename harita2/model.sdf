@@ -3,12 +3,13 @@
   <model name="harita2">
     <static>true</static>
     <link name="link">
+        <pose>0 0 0 1.570796 0 0</pose>
       <collision name="collision">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <scale>20 20 0.1</scale>
-            <uri>model://harita2.0/meshes/harita2.obj</uri>
+            <scale>20 20 20</scale>
+            <uri>model://harita2/meshes/harita2.obj</uri>
           </mesh>
         </geometry>
       </collision>
@@ -16,8 +17,8 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <scale>20 20 0.1</scale>
-            <uri>model://harita2.0/meshes/harita2.obj</uri>
+            <scale>20 20 20</scale>
+            <uri>model://harita2/meshes/harita2.obj</uri>
           </mesh>
         </geometry>
       </visual>

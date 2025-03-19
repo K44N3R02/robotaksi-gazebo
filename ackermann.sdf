@@ -30,6 +30,28 @@
       filename="gz-sim-scene-broadcaster-system"
       name="gz::sim::systems::SceneBroadcaster">
     </plugin>
+    <plugin
+      filename="gz-sim-sensors-system"
+      name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <plugin filename="gz-sim-imu-system"
+      name="gz::sim::systems::Imu">
+    </plugin>
+    <plugin
+      filename="gz-sim-navsat-system"
+      name="gz::sim::systems::NavSat">
+    </plugin>
+
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <world_frame_orientation>ENU</world_frame_orientation>
+      <latitude_deg>-22.9</latitude_deg>
+      <longitude_deg>-43.2</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+
 
     <light type="directional" name="sun">
       <cast_shadows>true</cast_shadows>
@@ -52,20 +74,8 @@
           <geometry>
             <plane>
               <normal>0 0 1</normal>
-              <size>100 100</size>
             </plane>
           </geometry>
-          <surface>
-            <friction>
-              <ode>
-                <mu>50000</mu>
-              </ode>
-              <bullet>
-                <friction>1000</friction>
-                <rolling_friction>100</rolling_friction>
-              </bullet>
-            </friction>
-          </surface>
         </collision>
         <visual name="visual">
           <geometry>
@@ -118,6 +128,16 @@
             </box>
           </geometry>
         </collision>
+        <sensor name="imu_sensor" type="imu">
+          <always_on>1</always_on>
+          <update_rate>1</update_rate>
+          <visualize>true</visualize>
+          <topic>imu</topic>
+        </sensor>
+        <sensor name="navsat_sensor" type="navsat">
+          <always_on>1</always_on>
+          <update_rate>30</update_rate>
+        </sensor>
       </link>
 
       <link name='front_left_wheel'>
@@ -370,6 +390,68 @@
         </visual>
       </link>
 
+      <link name="camera_link">
+        <pose relative_to='chassis'>-1.00571 0 0 0 0 0</pose>
+        <sensor type="camera" name="my_sensor">
+          <camera>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+              <width>320</width>
+              <height>240</height>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+          </camera>
+          <always_on>1</always_on>
+          <update_rate>30</update_rate>
+          <visualize>true</visualize>
+          <topic>camera</topic>
+        </sensor>
+      </link>
+
+      <joint name="camera_joint" type="fixed">
+        <child>camera_link</child>
+        <parent>chassis</parent>
+      </joint>
+
+      <link name="lidar_link">
+        <pose relative_to="chassis">0.8 0 0.5 0 0 0</pose>
+        <sensor name='gpu_lidar' type='gpu_lidar'>
+          <topic>lidar</topic>
+          <update_rate>10</update_rate>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>640</samples>
+                <resolution>1</resolution>
+                <min_angle>-1.396263</min_angle>
+                <max_angle>1.396263</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>1</samples>
+                <resolution>0.01</resolution>
+                <min_angle>0</min_angle>
+                <max_angle>0</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.08</min>
+              <max>10.0</max>
+              <resolution>0.01</resolution>
+            </range>
+          </ray>
+          <always_on>1</always_on>
+          <visualize>true</visualize>
+        </sensor>
+      </link>
+
+      <joint name="lidar_joint" type="fixed">
+        <child>lidar_link</child>
+        <parent>chassis</parent>
+      </joint>
+
       <joint name="front_left_wheel_steering_joint" type="revolute">
         <child>front_left_wheel_steering_link</child>
         <parent>chassis</parent>
@@ -494,6 +576,16 @@
         </input>
         <output type="gz.msgs.Twist" topic="/model/vehicle_blue/cmd_vel">
           linear: {x: 0.5}, angular: {z: 0.1}
+        </output>
+      </plugin>
+      <!-- Stop -->
+      <plugin filename="gz-sim-triggered-publisher-system"
+        name="gz::sim::systems::TriggeredPublisher">
+        <input type="gz.msgs.Int32" topic="/keyboard/keypress">
+          <match field="data">16777237</match>
+        </input>
+        <output type="gz.msgs.Twist" topic="/model/vehicle_blue/cmd_vel">
+          linear: {x: 0.0}, angular: {z: 0.0}
         </output>
       </plugin>
 

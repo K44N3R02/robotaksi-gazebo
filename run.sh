@@ -7,7 +7,7 @@ if [ "$#" -ne 1 ]; then
 fi
 
 # Define the path to the models directory
-MODELS_DIR="$(pwd)/models"
+MODELS_DIR="$(pwd)/harita2"
 
 # Check if the models directory exists
 if [ ! -d "$MODELS_DIR" ]; then
