@@ -1,0 +1,48 @@
+<?xml version='1.0'?>
+<sdf version='1.6'>
+  <model name='traffic_light'>
+    <link name='light_post'>
+      <visual name='green_light'>
+        <geometry>
+          <cylinder>
+            <radius>0.1</radius>
+            <length>0.05</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0 1 0 1</ambient>
+          <diffuse>0 1 0 1</diffuse>
+        </material>
+        <pose>0 0 2 0 0 0</pose>
+      </visual>
+
+      <visual name='yellow_light'>
+        <geometry>
+          <cylinder>
+            <radius>0.1</radius>
+            <length>0.05</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+        <pose>0 0 2.2 0 0 0</pose>
+      </visual>
+
+      <visual name='red_light'>
+        <geometry>
+          <cylinder>
+            <radius>0.1</radius>
+            <length>0.05</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>1 0 0 1</ambient>
+          <diffuse>1 0 0 1</diffuse>
+        </material>
+        <pose>0 0 2.4 0 0 0</pose>
+      </visual>
+    </link>
+  </model>
+</sdf>
