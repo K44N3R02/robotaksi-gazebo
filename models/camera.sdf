@@ -618,7 +618,7 @@
             <friction>0</friction>
           </dynamics>
         </axis>
-        <pose>0 -1.609823385706477e-15 3.7747582837255322e-15 0 0 0</pose>
+        <pose>0 -1.6653345369377348e-15 3.8857805861880479e-15 0 0 0</pose>
       </joint>
       <joint name='front_right_wheel_joint' type='revolute'>
         <parent>front_right_wheel_steering_link</parent>
@@ -640,7 +640,7 @@
             <friction>0</friction>
           </dynamics>
         </axis>
-        <pose>-1.1102230246251565e-16 2.2759572004815709e-15 -2.2204460492503131e-15 0 0 0</pose>
+        <pose>-1.1102230246251565e-16 2.3869795029440866e-15 -2.3314683517128287e-15 0 0 0</pose>
       </joint>
       <joint name='rear_left_wheel_joint' type='revolute'>
         <parent>chassis</parent>
@@ -662,7 +662,7 @@
             <friction>0</friction>
           </dynamics>
         </axis>
-        <pose>0 -1.609823385706477e-15 3.7747582837255322e-15 0 0 0</pose>
+        <pose>0 -1.6653345369377348e-15 3.8857805861880479e-15 0 0 0</pose>
       </joint>
       <joint name='rear_right_wheel_joint' type='revolute'>
         <parent>chassis</parent>
@@ -684,7 +684,7 @@
             <friction>0</friction>
           </dynamics>
         </axis>
-        <pose>0 2.2759572004815709e-15 -2.2204460492503131e-15 0 0 0</pose>
+        <pose>0 2.3869795029440866e-15 -2.3314683517128287e-15 0 0 0</pose>
       </joint>
       <plugin name='gz::sim::systems::AckermannSteering' filename='gz-sim-ackermann-steering-system'>
         <left_joint>front_left_wheel_joint</left_joint>
@@ -1262,6 +1262,41 @@
         <enable_wind>false</enable_wind>
       </link>
       <pose>-13.092497429072321 -6.291998467400024 0 0 0 0</pose>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='traffic_green'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/ser/robotaksi-gazebo-master/models/işaretler/traffic_green/meshes/traffic_green.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/ser/robotaksi-gazebo-master/models/işaretler/traffic_green/meshes/traffic_green.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-23.375533055358048 -7.8885779252788293 0 0 0 0</pose>
       <static>false</static>
       <self_collide>false</self_collide>
     </model>
